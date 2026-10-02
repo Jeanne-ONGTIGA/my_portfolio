@@ -81,10 +81,10 @@ export function Testimonials() {
 
                       <figcaption className="mt-5 flex items-center gap-3 border-t border-border/60 pt-4">
                         <img
-                          src={tm.avatar}
+                          /*src={}
                           alt={tm.name}
                           className="h-11 w-11 rounded-full object-cover ring-2 ring-primary/20"
-                          loading="lazy"
+                          loading="lazy" */
                         />
                         <div>
                           <p className="font-display text-sm font-semibold">{tm.name}</p>

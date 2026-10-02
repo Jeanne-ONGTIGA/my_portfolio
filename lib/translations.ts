@@ -12,7 +12,7 @@ export type Experience = {
   description: string; achievements: string[]; current: boolean;
 };
 export type Testimonial = {
-  name: string; role: string; company: string; avatar: string; quote: string; rating: number;
+  name: string; role: string; company: string; quote: string; rating: number;
 };
 
 export type Social = { name: string; href: string; icon: string };
@@ -100,8 +100,8 @@ export type Translation = {
   projectMeta: { title: string; tags: string[]; image: string; liveUrl: string; repoUrl: string; featured: boolean }[];
   experiences: (Omit<Experience, 'company' | 'period' | 'location' | 'current'> & ExperienceContent)[];
   experienceMeta: { company: string; period: string; location: string; current: boolean }[];
-  testimonials: (Omit<Testimonial, 'name' | 'company' | 'avatar' | 'rating'> & TestimonialContent)[];
-  testimonialMeta: { name: string; company: string; avatar: string; rating: number }[];
+  testimonials: (Omit<Testimonial, 'name' | 'company' | 'rating'> & TestimonialContent)[];
+  testimonialMeta: { name: string; company: string; rating: number }[];
 };
 
 export const translations: Record<Lang, Translation> = {
@@ -153,7 +153,7 @@ export const translations: Record<Lang, Translation> = {
       services: { eyebrow: 'Services', title: 'Ce que je peux faire pour vous', subtitle: "Des prestations sur mesure, de l'idée au déploiement.", requestAria: 'Demander ce service' },
       projects: { eyebrow: 'Projets', title: 'Mes réalisations récentes', subtitle: 'Une sélection de projets qui illustrent mon approche du produit.', all: 'Tous', featured: 'Featured', demo: 'Démo', code: 'Code' },
       experience: { eyebrow: 'Parcours', title: 'Mon expérience professionnelle', subtitle: 'Trois ans à construire des produits.', current: 'Actuel' },
-      testimonials: { eyebrow: 'Témoignages', title: 'Ce que disent mes clients', subtitle: 'La confiance est ma meilleure référence.', prev: 'Précédent', next: 'Suivant', dotAria: 'Témoignage' },
+      testimonials: { eyebrow: 'Témoignages', title: 'Ce que disent mes proches', subtitle: 'La confiance est ma meilleure référence.', prev: 'Précédent', next: 'Suivant', dotAria: 'Témoignage' },
       contact: {
         eyebrow: 'Contact', title: 'Travaillons ensemble', subtitle: 'Un projet en tête ? Écrivez-moi, je réponds généralement sous 24h.',
         details: 'Coordonnées', detailsSub: 'Préférez un autre canal ? Voici comment me joindre.',
@@ -189,8 +189,8 @@ export const translations: Record<Lang, Translation> = {
       { title: 'Conseil & Audit', description: "Auditez votre codebase, améliorez l'architecture et formez vos équipes aux bonnes pratiques.", features: ['Audit de code', 'Refactoring', 'Architecture', "Mentorat d'équipe"], price: '' },
     ],
     projectMeta: [
-      { title: 'Nimbus Analytics', tags: ['Next.js', 'TypeScript', 'PostgreSQL'], image: 'https://images.pexels.com/photos/27141316/pexels-photo-27141316.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', liveUrl: '#', repoUrl: '#', featured: true },
-      { title: 'Verdant', tags: ['Next.js', 'Stripe', 'Supabase', 'Tailwind CSS'], image: 'https://images.pexels.com/photos/9412376/pexels-photo-9412376.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', liveUrl: '#', repoUrl: '#', featured: true },
+      { title: 'ISP', tags: ['Php','CSS', 'JavaScript', 'MySQL'], image: '/images/projet2.png', liveUrl: '#', repoUrl: '#', featured: true },
+      { title: 'GESCOM', tags: ['Next.js', 'Stripe', 'Supabase', 'Tailwind CSS'], image: '/images/projet1.png', liveUrl: '#', repoUrl: '#', featured: true },
       { title: 'Cadence', tags: ['React Native', 'Expo', 'Reanimated', 'SQLite'], image: 'https://images.pexels.com/photos/887751/pexels-photo-887751.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', liveUrl: '#', repoUrl: '#', featured: false },
       /*{ title: 'Lumen CMS', tags: ['Node.js', 'GraphQL', 'React', 'Docker'], image: 'https://images.pexels.com/photos/374016/pexels-photo-374016.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', liveUrl: '#', repoUrl: '#', featured: false },
       { title: 'Atlas Travel', tags: ['Next.js', 'Mapbox', 'Supabase', 'Realtime'], image: 'https://images.pexels.com/photos/7235895/pexels-photo-7235895.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', liveUrl: '#', repoUrl: '#', featured: false },
@@ -217,20 +217,18 @@ export const translations: Record<Lang, Translation> = {
      /* { role: 'Développeuse', description: 'Premiers pas en agence web, apprentissage des bonnes pratiques et des cycles de livraison.', achievements: ['Contribution à 30+ projets clients', 'Automatisation des tests frontend', 'Apprentissage de React et Node.js en production'] },*/
     ],
     testimonialMeta: [
-      { name: 'Sophie Laurent', company: 'Nimbus Labs', avatar: 'https://images.pexels.com/photos/7752788/pexels-photo-7752788.jpeg?auto=compress&cs=tinysrgb&h=200&w=200', rating: 5 },
-      { name: 'Marc Dubois', company: 'Studio Hexa', avatar: 'https://images.pexels.com/photos/14950779/pexels-photo-14950779.jpeg?auto=compress&cs=tinysrgb&h=200&w=200', rating: 5 },
-      { name: 'Émilie Chen', company: 'Pixel & Co.', avatar: 'https://images.pexels.com/photos/14664508/pexels-photo-14664508.jpeg?auto=compress&cs=tinysrgb&h=200&w=200', rating: 5 },
-      { name: 'Thomas Renard', company: 'Verdant', avatar: 'https://images.pexels.com/photos/28442318/pexels-photo-28442318.jpeg?auto=compress&cs=tinysrgb&h=200&w=200', rating: 5 },
-      { name: 'Nadia Benali', company: 'Cadence', avatar: 'https://images.pexels.com/photos/25651531/pexels-photo-25651531.jpeg?auto=compress&cs=tinysrgb&h=200&w=200', rating: 5 },
-      { name: 'Julien Moreau', company: 'Atlas Travel', avatar: 'https://images.pexels.com/photos/7752805/pexels-photo-7752805.jpeg?auto=compress&cs=tinysrgb&h=200&w=200', rating: 5 },
+      { name: 'Gael IDOROFIO', company: '', rating: 5 },
+      { name: 'Stéphane BECKODRO', company: '', rating: 5 },
+      { name: 'Yvon ANDJINGBOPOU', company: '', rating: 5 },
+      { name: 'Jospin YANDENDJI', company: '', rating: 5 },
     ],
     testimonials: [
-      { role: 'CEO', quote: "Jeanne a transformé notre vision en un produit concret. Son attention aux détails et sa capacité à anticiper les besoins techniques nous ont fait gagner des mois de développement." },
-      { role: 'Product Manager', quote: "Une développeuse rare qui maîtrise aussi bien le frontend que le backend. Jeanne communique clairement, respecte les délais et élève toujours le niveau de l'équipe." },
-      { role: 'Design Lead', quote: "Travailler avec Jeanne, c'est la garantie que le design final correspond pixel près aux maquettes. Il comprend le design autant que le code, et c'est précieux." },
-      { role: 'CTO', quote: "Nous avons confié à Jeanne la refonte complète de notre plateforme. Résultat : une application 3x plus rapide et un taux de conversion en hausse de 45%." },
-      { role: 'Fondatrice', quote: "Jeanne a donné vie à notre application mobile avec une finesse d'exécution remarquable. Les animations sont fluides, l'UX est intuitive. Nos utilisateurs adorent." },
-      { role: 'Head of Engineering', quote: "Un partenaire technique de confiance. Jeanne a structuré notre codebase et mis en place des pratiques qui nous font encore gagner du temps aujourd'hui." },
+      { role: '', quote: "Jeanne a transformé notre vision en un produit concret. Son attention aux détails et sa capacité à anticiper les besoins techniques nous ont fait gagner des mois de développement." },
+      { role: '', quote: "Une développeuse rare qui maîtrise aussi bien le frontend que le backend. Jeanne communique clairement, respecte les délais et élève toujours le niveau de l'équipe." },
+      /*{ role: 'Design Lead', quote: "Travailler avec Jeanne, c'est la garantie que le design final correspond pixel près aux maquettes. Il comprend le design autant que le code, et c'est précieux." },
+      { role: 'CTO', quote: "Nous avons confié à Jeanne la refonte complète de notre plateforme. Résultat : une application 3x plus rapide et un taux de conversion en hausse de 45%." },*/
+      { role: '', quote: "Jeanne a donné vie à notre application mobile avec une finesse d'exécution remarquable. Les animations sont fluides, l'UX est intuitive. Nos utilisateurs adorent." },
+      { role: '', quote: "Un partenaire technique de confiance. Jeanne a structuré notre codebase et mis en place des pratiques qui nous font encore gagner du temps aujourd'hui." },
     ],
   },
   en: {
@@ -281,7 +279,7 @@ export const translations: Record<Lang, Translation> = {
       services: { eyebrow: 'Services', title: 'What I can do for you', subtitle: 'Tailored services, from idea to deployment.', requestAria: 'Request this service' },
       projects: { eyebrow: 'Projects', title: 'My recent work', subtitle: 'A selection of projects that illustrate my approach to product.', all: 'All', featured: 'Featured', demo: 'Demo', code: 'Code' },
       experience: { eyebrow: 'Experience', title: 'My professional journey', subtitle: 'three years building products, from junior to lead.', current: 'Current' },
-      testimonials: { eyebrow: 'Testimonials', title: 'What my clients say', subtitle: 'Trust is my best reference.', prev: 'Previous', next: 'Next', dotAria: 'Testimonial' },
+      testimonials: { eyebrow: 'Testimonials', title: 'What my kinfolk say', subtitle: 'Trust is my best reference.', prev: 'Previous', next: 'Next', dotAria: 'Testimonial' },
       contact: {
         eyebrow: 'Contact', title: "Let's work together", subtitle: 'Have a project in mind? Drop me a line — I usually reply within 24h.',
         details: 'Contact details', detailsSub: 'Prefer another channel? Here is how to reach me.',
@@ -317,9 +315,9 @@ export const translations: Record<Lang, Translation> = {
       { title: 'Consulting & Audit', description: 'Audit your codebase, improve architecture and train your teams on best practices.', features: ['Code audit', 'Refactoring', 'Architecture', 'Team mentoring'], price: '' },
     ],
     projectMeta: [
-      { title: 'Nimbus Analytics', tags: ['Next.js', 'TypeScript', 'PostgreSQL', 'Recharts', 'WebSockets'], image: 'https://images.pexels.com/photos/27141316/pexels-photo-27141316.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', liveUrl: '#', repoUrl: '#', featured: true },
-      { title: 'Verdant', tags: ['Next.js', 'Stripe', 'Supabase', 'Tailwind CSS'], image: 'https://images.pexels.com/photos/9412376/pexels-photo-9412376.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', liveUrl: '#', repoUrl: '#', featured: true },
-      { title: 'Cadence', tags: ['React Native', 'Expo', 'Reanimated', 'SQLite'], image: 'https://images.pexels.com/photos/887751/pexels-photo-887751.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', liveUrl: '#', repoUrl: '#', featured: false },
+      { title: 'ISP', tags: ['Php','CSS', 'JavaScript', 'MySQL'], image: '/images/projet2.png', liveUrl: '#', repoUrl: '#', featured: false },
+      { title: 'GESCOM', tags: ['Next.js', 'Stripe', 'Supabase', 'Tailwind CSS'], image: '/images/projet1.png', liveUrl: '#', repoUrl: '#', featured: true },
+      { title: '', tags: ['React Native', 'Expo', 'Reanimated', 'SQLite'], image: 'https://images.pexels.com/photos/887751/pexels-photo-887751.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', liveUrl: '#', repoUrl: '#', featured: false },
        /*{ title: 'Lumen CMS', tags: ['Node.js', 'React', 'Docker'], image: 'https://images.pexels.com/photos/374016/pexels-photo-374016.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', liveUrl: '#', repoUrl: '#', featured: false },
       { title: 'Atlas Travel', tags: ['Next.js', 'Mapbox', 'Supabase', 'Realtime'], image: 'https://images.pexels.com/photos/7235895/pexels-photo-7235895.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', liveUrl: '#', repoUrl: '#', featured: false },
       { title: 'Pulse Fitness', tags: ['React Native', 'OpenAI', 'HealthKit', 'TypeScript'], image: 'https://images.pexels.com/photos/3888405/pexels-photo-3888405.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', liveUrl: '#', repoUrl: '#', featured: false },*/
@@ -345,20 +343,18 @@ export const translations: Record<Lang, Translation> = {
       { role: 'Junior Developer', description: 'First steps in a web agency, learning best practices and delivery cycles.', achievements: ['Contributed to 30+ client projects', 'Automated frontend testing', 'Learned React and Node.js in production'] },
     ],
     testimonialMeta: [
-      { name: 'Sophie Laurent', company: 'Nimbus Labs', avatar: 'https://images.pexels.com/photos/7752788/pexels-photo-7752788.jpeg?auto=compress&cs=tinysrgb&h=200&w=200', rating: 5 },
-      { name: 'Marc Dubois', company: 'Studio Hexa', avatar: 'https://images.pexels.com/photos/14950779/pexels-photo-14950779.jpeg?auto=compress&cs=tinysrgb&h=200&w=200', rating: 5 },
-      { name: 'Emily Chen', company: 'Pixel & Co.', avatar: 'https://images.pexels.com/photos/14664508/pexels-photo-14664508.jpeg?auto=compress&cs=tinysrgb&h=200&w=200', rating: 5 },
-      { name: 'Thomas Renard', company: 'Verdant', avatar: 'https://images.pexels.com/photos/28442318/pexels-photo-28442318.jpeg?auto=compress&cs=tinysrgb&h=200&w=200', rating: 5 },
-      { name: 'Nadia Benali', company: 'Cadence', avatar: 'https://images.pexels.com/photos/25651531/pexels-photo-25651531.jpeg?auto=compress&cs=tinysrgb&h=200&w=200', rating: 5 },
-      { name: 'Julien Moreau', company: 'Atlas Travel', avatar: 'https://images.pexels.com/photos/7752805/pexels-photo-7752805.jpeg?auto=compress&cs=tinysrgb&h=200&w=200', rating: 5 },
+       { name: 'Gael IDOROFIO', company: '', rating: 5 },
+      { name: 'Stéphane BECKODRO', company: '', rating: 5 },
+      { name: 'Yvon ANDJINGBOPOU', company: '', rating: 5 },
+      { name: 'Jospin YANDENDJI', company: '', rating: 5 },
     ],
     testimonials: [
-      { role: 'CEO', quote: "Jeanne turned our vision into a tangible product. His attention to detail and ability to anticipate technical needs saved us months of development." },
-      { role: 'Product Manager', quote: "A rare developer who masters both frontend and backend. Jeanne communicates clearly, meets deadlines and always raises the team's level." },
-      { role: 'Design Lead', quote: "Working with Jeanne is the guarantee that the final design matches the mockups pixel for pixel. He understands design as much as code, and that's invaluable." },
-      { role: 'CTO', quote: "We entrusted Jeanne with the complete overhaul of our platform. Result: an app 3x faster and a 45% increase in conversion rate." },
-      { role: 'Founder', quote: "Jeanne brought our mobile app to life with remarkable execution finesse. The animations are smooth, the UX is intuitive. Our users love it." },
-      { role: 'Head of Engineering', quote: "A trusted technical partner. Jeanne structured our codebase and set up practices that still save us time today." },
+      { role: '', quote: "Jeanne turned our vision into a tangible product. His attention to detail and ability to anticipate technical needs saved us months of development." },
+      { role: '', quote: "A rare developer who masters both frontend and backend. Jeanne communicates clearly, meets deadlines and always raises the team's level." },
+      /*{ role: 'Design Lead', quote: "Working with Jeanne is the guarantee that the final design matches the mockups pixel for pixel. He understands design as much as code, and that's invaluable." },
+      { role: '', quote: "We entrusted Jeanne with the complete overhaul of our platform. Result: an app 3x faster and a 45% increase in conversion rate." },*/
+      { role: '', quote: "Jeanne brought our mobile app to life with remarkable execution finesse. The animations are smooth, the UX is intuitive. Our users love it." },
+      { role: '', quote: "A trusted technical partner. Jeanne structured our codebase and set up practices that still save us time today." },
     ],
   },
 };
