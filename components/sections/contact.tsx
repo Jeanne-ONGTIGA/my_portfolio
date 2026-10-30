@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { profileStatic, socials } from '@/lib/translations';
 import { getSocialIcon } from '@/lib/icons';
 import { Reveal } from '@/components/reveal';
-import { supabase } from '@/lib/supabase';
+import { getSupabaseClient } from '@/lib/supabase';
 import { useI18n } from '@/components/language-provider';
 import {
   LuSend,
@@ -50,6 +50,9 @@ export function Contact() {
     }
 
     try {
+      const supabase = getSupabaseClient();
+      if (!supabase) throw new Error('Supabase is not configured');
+
       const { error } = await supabase.from('contact_messages').insert({
         name,
         email,
